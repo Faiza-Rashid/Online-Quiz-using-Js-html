@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Choice Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .quiz-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Multiple Choice Quiz</h1>
+        <form id="quiz-form">
+            <div class="question">
+                <p>1. What is the capital of France?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="paris"> Paris</label>
+                    <label><input type="radio" name="q1" value="london"> London</label>
+                    <label><input type="radio" name="q1" value="berlin"> Berlin</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. Which planet is known as the Red Planet?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="earth"> Earth</label>
+                    <label><input type="radio" name="q2" value="mars"> Mars</label>
+                    <label><input type="radio" name="q2" value="venus"> Venus</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>3. What does HTML stand for? </p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="Hyper links language"> Hyper links language</label>
+                    <label><input type="radio" name="q3" value="Hyper Text Markup Language">Hyper Text Markup Language</label>
+                    <label><input type="radio" name="q3" value="Home Tool Markup Language">Home Tool Markup Language</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>4. How many sizes of headers are available in HTML by default?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="6"> 6</label>
+                    <label><input type="radio" name="q4" value="4"> 4</label>
+                    <label><input type="radio" name="q4" value="1"> 1</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>5. What are the types of lists available in HTML?</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="Ordered and unordered list"> Ordered and unordered lists</label>
+                    <label><input type="radio" name="q5" value="Named and Unnamed list"> Named and Unnamed list</label>
+                    <label><input type="radio" name="q5" value="Nothing"> Nothing</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>6. What CSS property is used to change the text color of an element?</p>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="color"> color</label>
+                    <label><input type="radio" name="q6" value="background"> background</label>
+                    <label><input type="radio" name="q6" value="font-size"> font-size</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>7. Which CSS property is used to control the spacing between letters in a text?</p>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="letter-spacing"> letter-spacing</label>
+                    <label><input type="radio" name="q7" value="word-spacing"> word-spacing</label>
+                    <label><input type="radio" name="q7" value="line-height"> line-height</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>8. In CSS, what property is used to change the style of the cursor when hovering over an element?</p>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="cursor"> cursor</label>
+                    <label><input type="radio" name="q8" value="hover"> hover</label>
+                    <label><input type="radio" name="q8" value="pointer"> pointer</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>9. Which CSS property is used to add shadows to text?</p>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="box-shadow"> box-shadow</label>
+                    <label><input type="radio" name="q9" value="text-shadow"> text-shadow</label>
+                    <label><input type="radio" name="q9" value="drop-shadow"> drop-shadow</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>10. What does CSS stand for?</p>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="Cascading Style Sheet"> Cascading Style Sheet</label>
+                    <label><input type="radio" name="q10" value="Computer Style Sheet"> Computer Style Sheet</label>
+                    <label><input type="radio" name="q10" value="Creative Style Sheet"> Creative Style Sheet</label>
+                </div>
+            </div>
+            <button type="button" id="submit-button">Submit Answers</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("submit-button").addEventListener("click", function() {
+            // Define correct answers
+            const correctAnswers = {
+                q1: "paris",
+                q2: "mars",
+                q3: "Hyper Text Markup Language",
+                q4: "6",
+                q5: "Ordered and unordered list",
+                q6: "color",
+                q7: "letter-spacing",
+                q8: "cursor",
+                q9: "text-shadow",
+                q10: "Cascading Style Sheet",
+            };
+
+            // Initialize variables to count correct and wrong answers
+            let correctCount = 0;
+            let wrongCount = 0;
+
+            // Loop through each question
+            for (let i = 1; i <= 10; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+
+                if (selectedOption) {
+                    const userAnswer = selectedOption.value;
+                    const questionName = `q${i}`;
+
+                    if (userAnswer === correctAnswers[questionName]) {
+                        correctCount++;
+                    } else {
+                        wrongCount++;
+                    }
+                }
+            }
+
+            // Display the results using an alert
+            const message = `Correct Answers: ${correctCount}\nWrong Answers: ${wrongCount}`;
+            alert(message);
+        });
+    </script>
+</body>
+</html>
